@@ -1,3 +1,6 @@
+const Scooter = require('../src/Scooter')
+const User = require('../src/User')
+
 class ScooterApp {
     constructor() {
 this.stations = {
