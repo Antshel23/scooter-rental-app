@@ -1,0 +1,1 @@
+const ScooterApp = require('../src/ScooterApp')
