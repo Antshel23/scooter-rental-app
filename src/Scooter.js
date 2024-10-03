@@ -18,20 +18,33 @@ this.user = user
 return true
 console.log(`${this.user} has taken Scooter ${this.serial}!`)
  }
+ else if (!user instanceof User) {
+    console.log('Not possible')
+    return false
+ }
  else if (user instanceof User && this.charge < 20 && this.isBroken == false) {
-throw Error('Scooter needs to charge')
+    console.log('Scooter needs to charge')
+    return false
  }
  else if (user instanceof User && this.charge > 20 && this.isBroken !== false) {
-    throw Error('Scooter is broken')
+    console.log('Scooter is broken')
+    return false
      }
-     else {
-        throw Error('Not possible')
-     }
+
 }
 
 dock(station) {
+if (this.user) {
+    //add scooterapp dockScooter function to add back to station
+this.user = null
+return true
+}
+else {
+    console.log('Scooter is not rented')
+    return false
+}
+}
+}
 
-}
-}
 
 module.exports = Scooter
