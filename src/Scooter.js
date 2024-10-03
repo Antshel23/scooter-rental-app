@@ -8,7 +8,13 @@ class Scooter {
         this.charge = 100
         this.isBroken = false
     }
+rent(user) {
+ 
+}
 
+dock(station) {
+    
+}
 }
 
 module.exports = Scooter
