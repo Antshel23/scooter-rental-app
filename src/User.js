@@ -13,7 +13,7 @@ if (password == this.password) {
     return true
 }
 else {
-    throw Error('Incorrect password')
+    throw new Error('Incorrect password')
     return false
 }
 }
@@ -25,7 +25,7 @@ this.loggedIn = false
 return true
     }
     else {
-        throw Error ('Already logged out')
+        throw new Error ('Already logged out')
     }
 }
 }

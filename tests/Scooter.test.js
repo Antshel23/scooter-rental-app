@@ -16,16 +16,21 @@ describe('rent function', () => {
         const user3 = new User('ant', 'pass', 22)
         expect(scooter3.rent(user3)).toBe(true)
     })
+    test('rent out to a positive user ', () => {
+        const scooter3 = new Scooter('England')
+        const na = 1
+        expect(scooter3.rent(na)).toBe(undefined)
+    })
 })
 
 describe('dock function', () => {
-    test('dock removes from positive user', () => {
+    test('dock removes from using user', () => {
 const scooter4 = new Scooter('England')
 const user4 = new User('ant', 'pass', 22)
 scooter4.rent(user4)
         expect(scooter4.dock('England')).toBe(true)
     })
-        test('dock cannot remove from a false user', () => {
+        test('dock cannot remove from a non-using user', () => {
 const scooter5 = new Scooter('England')
 const user5 = new User('ant', 'pass', 22)
 scooter5.rent(user5)
