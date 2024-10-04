@@ -9,6 +9,7 @@ this.stations = {
     'Spain': []
 }
 this.registeredUsers = {}
+this.scooters = []
 }
 
 registerUser(username,password,age) {
@@ -48,6 +49,7 @@ createScooter(station) {
     if (this.stations[station]) {
     const newScooter = new Scooter(station)
     this.stations[station].push(newScooter.serial)
+    this.scooters.push(newScooter)
     return newScooter
 }
     else {
@@ -67,8 +69,16 @@ else {
 }
 }
 
-rentScooter(scooter, user) {
-
+rentScooter(station, user) {
+    if (this.stations[station] && this.stations[station].length > 0 && user instanceof User) {
+    const scooterSerial = this.stations[station][0]
+    const scooterChosen = this.scooters.find(scooter => scooter.serial === scooterSerial)
+    scooterChosen.rent(user)
+    this.stations[station].shift()
+    }
+    else {
+        throw new Error('Scooter unavailable')
+    }
 }
 
 print() {

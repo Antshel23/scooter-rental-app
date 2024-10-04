@@ -101,3 +101,24 @@ describe('dockScooter function tests', () => {
         expect(() => app3.dockScooter(scooter2,'Germany')).toThrow('Docking not possible');
     })
 })
+
+describe('rentScooter function tests', () => {
+    test('rentScooter for positive case', () => {
+        const app = new ScooterApp()
+        app.registerUser('antshel2', 'pass', 22)
+        const user = app.registeredUsers['antshel2']
+        app.loginUser('antshel2', 'pass')
+        const scooter1 = app.createScooter('England')
+        app.rentScooter('England', user)
+        expect(app.stations['England']).toEqual([]);
+        expect(scooter1.user.username).toContain('antshel2');
+    })
+    test('cannot rentScooter for negative case', () => {
+        const app = new ScooterApp()
+        app.registerUser('antshel2', 'pass', 22)
+        const user = app.registeredUsers['antshel2']
+        app.loginUser('antshel2', 'pass')
+        const scooter1 = app.createScooter('England')
+        expect(() => app.rentScooter('Spain', user)).toThrow('Scooter unavailable');
+    })
+})
