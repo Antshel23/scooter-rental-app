@@ -15,8 +15,8 @@ class Scooter {
 rent(user) {
  if (user instanceof User && this.charge > 20 && this.isBroken == false) {
 this.user = user
-return true
 console.log(`${this.user} has taken Scooter ${this.serial}!`)
+return true
  }
  else if (!user instanceof User) {
     console.log('Not possible')
