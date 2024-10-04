@@ -17,9 +17,12 @@ registerUser(username,password,age) {
         if (this.registeredUsers[username]) {
             throw new Error('User already exists');
         }
+        if (age < 17) {
+            throw new Error('Minimum age: 18')
+        }
     const newUser = new User(username, password, age)
     this.registeredUsers[username] = newUser
-    //console.log(`User: ${newUser.username} created!`)
+    console.log(`User: ${newUser.username} created!`)
     return true
     }
     else {
@@ -30,6 +33,7 @@ registerUser(username,password,age) {
 loginUser(username, password) {
     if (this.registeredUsers[username]) {
     return this.registeredUsers[username].login(password)
+    console.log('Login successful')
 }
     else {
     throw new Error('Username does not exist. Try again')
@@ -39,6 +43,7 @@ loginUser(username, password) {
 logoutUser(username) {
     if (this.registeredUsers[username]) {
         return this.registeredUsers[username].logout()
+        console.log('Log out successful')
     }
     else {
         throw new Error('Username does not exist. Try again')
@@ -50,6 +55,7 @@ createScooter(station) {
     const newScooter = new Scooter(station)
     this.stations[station].push(newScooter.serial)
     this.scooters.push(newScooter)
+    console.log(`New Scooter: ${newScooter.serial} created at ${newScooter.station}`)
     return newScooter
 }
     else {
@@ -62,6 +68,7 @@ dockScooter(scooter, station) {
         if (!scooter.user) {
     this.stations[station].push(scooter.serial)
     scooter.dock(station)
+    console.log(`Scooter: ${scooter.serial} docked at ${scooter.station}`)
         }
 }
 else {
@@ -75,6 +82,7 @@ rentScooter(station, user) {
     const scooterChosen = this.scooters.find(scooter => scooter.serial === scooterSerial)
     scooterChosen.rent(user)
     this.stations[station].shift()
+    console.log(`Scooter: ${scooterSerial} rented to ${user.username} from ${station}`)
     }
     else {
         throw new Error('Scooter unavailable')
@@ -82,7 +90,8 @@ rentScooter(station, user) {
 }
 
 print() {
-
+console.log(this.registeredUsers)
+console.log(this.stations)
 }
 }
 

@@ -21,6 +21,13 @@ describe('registerUser function tests', () => {
             app1.registerUser('antshel23', 'anotherPass', 30)
         }).toThrow('User already exists')
 })
+
+test('Cannot registerUser for underage user', () => {
+    const app1 = new ScooterApp()
+    expect(() => {
+        app1.registerUser('antshel23', 'pass', 15)
+    }).toThrow('Minimum age: 18')
+})
 })
 
 describe('loginUser function tests', () => {
@@ -120,5 +127,16 @@ describe('rentScooter function tests', () => {
         app.loginUser('antshel2', 'pass')
         const scooter1 = app.createScooter('England')
         expect(() => app.rentScooter('Spain', user)).toThrow('Scooter unavailable');
+    })
+})
+
+describe('print function tests', () => {
+    test('prints info', () => {
+        const app = new ScooterApp()
+        app.registerUser('antshel2', 'pass', 22)
+        const user = app.registeredUsers['antshel2']
+        app.loginUser('antshel2', 'pass')
+        const scooter1 = app.createScooter('England')
+        expect(app.print()).not.toBe(null)
     })
 })
