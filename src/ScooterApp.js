@@ -27,10 +27,10 @@ registerUser(username,password,age) {
 }
 
 loginUser(username, password) {
-if (this.registeredUsers[username]) {
+    if (this.registeredUsers[username]) {
     return this.registeredUsers[username].login(password)
 }
-else {
+    else {
     throw new Error('Username does not exist. Try again')
 }
 }
@@ -45,17 +45,26 @@ logoutUser(username) {
 }
 
 createScooter(station) {
-if (this.stations[station]) {
+    if (this.stations[station]) {
     const newScooter = new Scooter(station)
     this.stations[station].push(newScooter.serial)
+    return newScooter
 }
-else {
+    else {
     throw new Error('Station does not exist')
 }
 }
 
 dockScooter(scooter, station) {
-
+    if (scooter instanceof Scooter && this.stations[station]) {
+        if (!scooter.user) {
+    this.stations[station].push(scooter.serial)
+    scooter.dock(station)
+        }
+}
+else {
+    throw new Error('Docking not possible')
+}
 }
 
 rentScooter(scooter, user) {

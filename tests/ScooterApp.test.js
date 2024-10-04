@@ -79,3 +79,25 @@ describe('createScooter function tests', () => {
         expect(() => app1.createScooter('Germany')).toThrow('Station does not exist');
     })
 })
+
+describe('dockScooter function tests', () => {
+    test('dockScooter for positive case', () => {
+        const app2 = new ScooterApp()
+        app2.registerUser('antshel2', 'pass', 22)
+        const user = app2.registeredUsers['antshel2']
+        app2.loginUser('antshel2', 'pass')
+        const scooter1 = app2.createScooter('England')
+        scooter1.rent(user)
+        app2.dockScooter(scooter1,'England')
+        expect(app2.stations['England']).toEqual([scooter1.serial]);
+    })
+    test('cannot dockScooter for negative case', () => {
+        const app3 = new ScooterApp()
+        app3.registerUser('antshel2', 'pass', 22)
+        const user = app3.registeredUsers['antshel2']
+        app3.loginUser('antshel2', 'pass')
+        const scooter2 = app3.createScooter('England')
+        scooter2.rent(user)
+        expect(() => app3.dockScooter(scooter2,'Germany')).toThrow('Docking not possible');
+    })
+})
