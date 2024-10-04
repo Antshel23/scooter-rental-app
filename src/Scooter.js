@@ -1,5 +1,4 @@
-const User = require('../src/User')
-const ScooterApp = require('../src/ScooterApp')
+const User = require('./User.js')
 
 class Scooter {
     static nextSerial = 1

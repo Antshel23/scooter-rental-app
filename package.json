@@ -1,7 +1,6 @@
 {
   "name": "scooter-rental-app",
   "version": "1.0.0",
-  "main": "src/ScooterApp.js",
   "scripts": {
     "test": "jest"
   },
@@ -9,5 +8,7 @@
     "jest": "^29.7.0"
   }
 }
+
+
 
 
