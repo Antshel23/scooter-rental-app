@@ -14,19 +14,19 @@ class Scooter {
 rent(user) {
  if (user instanceof User && this.charge > 20 && this.isBroken == false) {
 this.user = user
-console.log(`${this.user} has taken Scooter ${this.serial}!`)
+//console.log(`${this.user} has taken Scooter ${this.serial}!`)
 return true
  }
  else if (!user instanceof User) {
-    console.log('Not possible')
+    throw new Error('Not possible')
     return false
  }
  else if (user instanceof User && this.charge < 20 && this.isBroken == false) {
-    console.log('Scooter needs to charge')
+    throw new Error('Scooter needs to charge')
     return false
  }
  else if (user instanceof User && this.charge > 20 && this.isBroken !== false) {
-    console.log('Scooter is broken')
+    throw new Error('Scooter is broken')
     return false
      }
 
@@ -39,7 +39,7 @@ this.user = null
 return true
 }
 else {
-    console.log('Scooter is not rented')
+    throw new Error('Scooter is not rented')
     return false
 }
 }

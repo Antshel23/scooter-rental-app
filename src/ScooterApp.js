@@ -18,7 +18,7 @@ registerUser(username,password,age) {
         }
     const newUser = new User(username, password, age)
     this.registeredUsers[username] = newUser
-    console.log(`User: ${newUser.username} created!`)
+    //console.log(`User: ${newUser.username} created!`)
     return true
     }
     else {
@@ -27,11 +27,21 @@ registerUser(username,password,age) {
 }
 
 loginUser(username, password) {
-
+if (this.registeredUsers[username]) {
+    return this.registeredUsers[username].login(password)
+}
+else {
+    throw new Error('Username does not exist. Try again')
+}
 }
 
 logoutUser(username) {
-
+    if (this.registeredUsers[username]) {
+        return this.registeredUsers[username].logout()
+    }
+    else {
+        throw new Error('Username does not exist. Try again')
+    }
 }
 
 createScooter(station) {

@@ -16,7 +16,7 @@ describe('rent function', () => {
         const user3 = new User('ant', 'pass', 22)
         expect(scooter3.rent(user3)).toBe(true)
     })
-    test('rent out to a positive user ', () => {
+    test('cannot rent out to a negativee user ', () => {
         const scooter3 = new Scooter('England')
         const na = 1
         expect(scooter3.rent(na)).toBe(undefined)
@@ -35,6 +35,6 @@ const scooter5 = new Scooter('England')
 const user5 = new User('ant', 'pass', 22)
 scooter5.rent(user5)
         scooter5.dock('England')
-        expect(scooter5.dock('England')).toBe(false)
+        expect(() => scooter5.dock('England')).toThrow('Scooter is not rented')
     })
 })
