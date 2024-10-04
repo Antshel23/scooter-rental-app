@@ -46,9 +46,8 @@ logoutUser(username) {
 
 createScooter(station) {
 if (this.stations[station]) {
-const newScooter = new Scooter(station)
+    const newScooter = new Scooter(station)
     this.stations[station].push(newScooter.serial)
-    return true
 }
 else {
     throw new Error('Station does not exist')

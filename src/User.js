@@ -14,7 +14,6 @@ if (password == this.password) {
 }
 else {
     throw new Error('Incorrect password')
-    return false
 }
 }
 
