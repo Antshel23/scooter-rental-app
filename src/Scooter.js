@@ -34,7 +34,6 @@ return true
 
 dock(station) {
 if (this.user) {
-    //add scooterapp dockScooter function to add back to station
 this.user = null
 return true
 }

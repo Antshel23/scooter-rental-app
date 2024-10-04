@@ -65,3 +65,17 @@ describe('logoutUser function tests', () => {
         expect(() => app1.logoutUser('antshel2')).toThrow('Username does not exist. Try again');
       });
 })
+
+describe('createScooter function tests', () => {
+    test('createScooter for positive case', () => {
+        const app1 = new ScooterApp()
+        app1.createScooter('England')
+        app1.createScooter('France')
+        app1.createScooter('England')
+        expect(app1.stations).toEqual({ England: [ 1, 3 ], France: [ 2 ], Spain: [] });
+    })
+    test('cannot createScooter for negative case', () => {
+        const app1 = new ScooterApp()
+        expect(() => app1.createScooter('Germany')).toThrow('Station does not exist');
+    })
+})
