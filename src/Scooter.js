@@ -14,7 +14,7 @@ class Scooter {
 rent(user) {
  if (user instanceof User && this.charge > 20 && this.isBroken == false) {
     this.user = user
-//console.log(`${this.user} has taken Scooter ${this.serial}!`)
+console.log(`${this.user.username} has taken Scooter ${this.serial}`)
     return true
  }
  else if (!user instanceof User) {
@@ -32,6 +32,7 @@ rent(user) {
 dock(station) {
 if (this.user) {
     this.user = null
+    console.log(`Scooter: ${this.serial} docked at ${station}`)
     return true
 }
 else {

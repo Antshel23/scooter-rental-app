@@ -9,7 +9,7 @@ class User {
 login(password) {
 if (password == this.password) {
     this.loggedIn = true
-    //console.log('Logged in')
+    console.log('Logged in')
     return true
 }
 else {
@@ -19,9 +19,9 @@ else {
 
 logout() {
     if (this.loggedIn == true) {
-this.loggedIn = false
- //console.log('Logged out')
-return true
+    this.loggedIn = false
+    console.log('Logged out')
+    return true
     }
     else {
         throw new Error ('Already logged out')
